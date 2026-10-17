@@ -70,6 +70,7 @@ function updateMemoryUI() {
   if (el) el.value = readMemory();
 
   const status = $('#memory-status');
+
   if (status) {
     status.textContent = readMemory()
       ? 'Memory is saved on this device and can be used in future chats.'
@@ -899,7 +900,7 @@ async function sendMessage(text) {
 
     typing.remove();
 
-    // FIX: Read the actual reply returned by the backend.
+    // FIX: The backend returns { reply: "..." }, not just { answer: "..." }.
     const reply =
       typeof data.reply === 'string' ? data.reply :
       typeof data.answer === 'string' ? data.answer :
